@@ -27,14 +27,13 @@ if (mysqli_connect_errno())
 
 if ($_POST['DBTable'] == "neighbor") {
 	$GroupID = json_decode($_POST['GroupID']);
-	$result = mysqli_query($con,"SELECT * FROM neighbor WHERE DestID = 3");
-	
-
-		//$jsonstr =array('GID'=>$row['GroupID'] , 'SID'=>$row['SourceID'] , 'DID'=>$row['DestID']);
-		//$jsonstr =array($row);
-	$row = mysqli_fetch_array($result);
-	$jsonstr =array ('SID'=>'1','DID'=>'2');
-	echo json_encode($row);
+	$result = mysqli_query($con,"SELECT * FROM neighbor WHERE GroupID='$GroupID'");
+	$rows=array();
+	$jsonstr = array('GID'=>'8' , 'SID'=>'8' , 'DID'=>'8');
+	while ($r = mysqli_fetch_assoc($result)){
+		$rows[] = $r;
+	}
+	echo json_encode($rows);
 }
 
 
