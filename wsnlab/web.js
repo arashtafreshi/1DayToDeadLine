@@ -6,7 +6,7 @@ $(".MotesGroup").click(function(){
 	//alert("GroupID : "+GroupID);
 });
 
-$("#bigImgCon").css("background-color","black");
+$("#bigImgCon").css("background-color","#E6E6E6");
 $("body").css("background-color","#E9EDF5");
 
 // when Group image clicked
@@ -212,7 +212,7 @@ $(".btnselector").click(function(){
 		// in case "Neighbors Graph" clicked
 		else if ($(this).text()=="Neighbors Graph" ) {
 			$(".modalBody").html("\
-				<label>Signal strength:</label>\
+				<label>Transmission Power</label>\
 				<input id='amount' type='text' class='span1' value='45'>\
 				<div id='slider-range-max'></div><hr>\
 				<p>The result shown is the result of last update.</p>\
@@ -224,10 +224,10 @@ $(".btnselector").click(function(){
 			$(function() {
 				$( "#slider-range-max" ).slider({
 				  range: "max",
-				  min: 20,
-				  max: 80,
-				  step: 10,
-				  value: 40,
+				  min: 1,
+				  max: 31,
+				  step: 3,
+				  value: 31,
 				  slide: function( event, ui ) {
 					$( "#amount" ).val( ui.value );
 				  }
@@ -253,17 +253,9 @@ $(".btnselector").click(function(){
 		else if ($(this).text()=="Serial Forwarder" ) {
 			
 			$(".modalBody").html("\
-				<p>Amy (0):</p>\
-		    	<div class='progress progress-striped active'>\
+				<p>Check your Leds to see if SerialForwarding is working or not</p>\
+		    	<p>If they are Blinking everything is file with Serial Forwarding in your system</p>\
 		    		<div class='bar' style='width:40%;'></div>\
-		    	</div><hr>\
-		    		<p>Stuart (1):</p>\
-		    	<div class='progress progress-striped active'>\
-		    		<div class='bar' style='width:15%;'></div>\
-		    	</div><hr>\
-		    		<p>Barry (3):</p>\
-		    	<div class='progress progress-striped active'>\
-		    		<div class='bar bar-danger' style='width:67%;'></div>\
 		    	</div><hr>\
 			");
 
@@ -286,8 +278,56 @@ $(".btnselector").click(function(){
 
 		}
 
+		else if ($(this).text()=="Send Beacon" ) {
+			
+			$(".modalBody").html("\
+				<p>Check Blue Leds on Motes</p>\
+		    	<p>If they are Blinking everything is file with BeaconSend in your system</p>\
+		    		<div class='bar' style='width:40%;'></div>\
+		    	</div><hr>\
+			");
+			
+			// Insert job into DB
+			$("tr.SelectedMote").each(function(){
+				var MoteID = $(this).attr("data-MoteID");
+				var currentTime = new Date();
+				var JsonToSend = {
+					"DBTable":"job" ,
+					"ActivityID":4 ,
+				  	"GroupID":GroupID ,
+				   	"JobDate":currentTime ,
+				    "JobID":5 ,
+			     	"MoteID":MoteID ,
+				"UserID":3};
+				InsertToDB(JsonToSend);
+				
+			});
+		}
 
-		
+		else if ($(this).text()=="Temperature" ) {
+				
+			$(".modalBody").html("\
+		    	<p>Here we need to add a table for Temperature</p>\
+		    		<div class='bar' style='width:40%;'></div>\
+		    	</div><hr>\
+			");
+			
+			// Insert job into DB
+			$("tr.SelectedMote").each(function(){
+				var MoteID = $(this).attr("data-MoteID");
+				var currentTime = new Date();
+				var JsonToSend = {
+					"DBTable":"job" ,
+					"ActivityID":4 ,
+				  	"GroupID":GroupID ,
+				   	"JobDate":currentTime ,
+				    "JobID":5 ,
+			     	"MoteID":MoteID ,
+				"UserID":3};
+				InsertToDB(JsonToSend);
+				
+			});
+		}
 
 		else  {
 			//$(".modalBody").html("<p>Empty</p>");
