@@ -253,7 +253,7 @@ $(".btnselector").click(function(){
 		else if ($(this).text()=="Serial Forwarder" ) {
 			
 			$(".modalBody").html("\
-				<p>Check your Leds to see if SerialForwarding is working or not</p>\
+				<p style='color:red'><Blink>Check Red Leds on Motes</Blink></p>\
 		    	<p>If they are Blinking everything is file with Serial Forwarding in your system</p>\
 		    		<div class='bar' style='width:40%;'></div>\
 		    	</div><hr>\
@@ -281,7 +281,7 @@ $(".btnselector").click(function(){
 		else if ($(this).text()=="Send Beacon" ) {
 			
 			$(".modalBody").html("\
-				<p>Check Blue Leds on Motes</p>\
+				<p style='color:blue'><Blink>Check Blue Leds on Motes</Blink></p>\
 		    	<p>If they are Blinking everything is file with BeaconSend in your system</p>\
 		    		<div class='bar' style='width:40%;'></div>\
 		    	</div><hr>\
