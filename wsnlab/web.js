@@ -28,7 +28,6 @@ $(".btnselector").click(function(){
 		// in case "Flash" clicked
 		if ($(this).text()=="Flash" ){
 			$(".modalBody").html("\
-				<p>Please upload your file here to Flash on the selected mote(s)</p>\
 				<form id='upload' method='post' action='upload.php' enctype='multipart/form-data'>\
 		            <div id='drop'>\
 		                Drop Here\
@@ -307,7 +306,36 @@ $(".btnselector").click(function(){
 		else if ($(this).text()=="Temperature" ) {
 				
 			$(".modalBody").html("\
-		    	<p>Here we need to add a table for Temperature</p>\
+				<table class='table table-condensed'>\
+					<thead class='well'>\
+						<tr>\
+							<th>ID</th>\
+							<th>Name</th>\
+							<th>Group ID</th>\
+							<th>Temperature</th>\
+						</tr>\
+					</thead>\
+					<tbody id='tblBody'>\
+						<tr class='success' data-MoteID='0' data-MoteName='Amy'>\
+							<td>0</td>\
+							<td>Amy</td>\
+							<td>1</td>\
+							<td>25 C</td>\
+						</tr>\
+						<tr class='success' data-MoteID='1' data-MoteName='Stuart'>\
+							<td>1</td>\
+							<td>Stuart</td>\
+							<td>1</td>\
+							<td>25 C</td>\
+						</tr>\
+						<tr class='success' data-MoteID='2' data-MoteName='Barry'>\
+							<td>2</td>\
+							<td>Barry</td>\
+							<td>1</td>\
+							<td>25 C</td>\
+						</tr>\
+					</tbody>\
+				</table>\
 		    		<div class='bar' style='width:40%;'></div>\
 		    	</div><hr>\
 			");
