@@ -491,7 +491,7 @@ function updateGraph(){
 
 		$.post("php/select.php" ,JsonToSend ,  function(data){
 		var a =jQuery.parseJSON(data);
-		alert(a.GID);
+		alert(a.SID);
 
 		//($("#user").val()==a.UN) && ($("#pass").val()==a.UP)
 
