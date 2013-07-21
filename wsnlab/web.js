@@ -491,10 +491,11 @@ function updateGraph(){
 
 		$.post("php/select.php" ,JsonToSend ,  function(data){
 		var a =jQuery.parseJSON(data);
-		alert(a);
-		
+		alert(a.GID);
+
+		//($("#user").val()==a.UN) && ($("#pass").val()==a.UP)
 
 	});
 
-;
+//;
 }

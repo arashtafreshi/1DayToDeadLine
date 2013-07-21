@@ -27,10 +27,12 @@ if (mysqli_connect_errno())
 
 if ($_POST['DBTable'] == "neighbor") {
 	$GroupID = json_decode($_POST['GroupID']);
-	$result = mysqli_query($con,"SELECT * FROM "+$GroupID+"");
+	$result = mysqli_query($con,"SELECT * FROM neighbor WHERE GroupID='+$GroupID'");
 	$row = mysqli_fetch_array($result);
-	$jsonstr =array('GID'=>$row['GroupID'] , 'SID'=>$row['SourceID'] , 'DID'=>$row['DestID']);
+	//$jsonstr =array('GID'=>$row['GroupID'] , 'SID'=>$row['SourceID'] , 'DID'=>$row['DestID']);
+	$jsonstr =array($row);
 	echo json_encode($jsonstr);
+
 }
 
 
